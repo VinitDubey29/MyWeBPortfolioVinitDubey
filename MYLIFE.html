@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VINIT DUBEY</title>
+<meta name="description" content="Vinit Dubey — Computer Science undergraduate specializing in Cyber Security. Projects, education, skills and contact details.">
+
+<style>
+  :root{
+    --bg: #fcc4c4;
+    --surface: #e0a5c8;
+    --surface-2: #e0a5c8;
+    --line: #E4D3DC;
+    --accent: #0D9488;
+    --accent-2: #D97706;
+    --text: #000000;
+    --muted: #5B677A;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 8% 12%, rgba(248,180,180,0.55) 0%, rgba(248,180,180,0) 40%),
+      radial-gradient(circle at 92% 8%, rgba(173,205,250,0.55) 0%, rgba(173,205,250,0) 42%),
+      radial-gradient(circle at 88% 85%, rgba(216,180,245,0.5) 0%, rgba(216,180,245,0) 45%),
+      radial-gradient(circle at 12% 90%, rgba(250,228,150,0.55) 0%, rgba(250,228,150,0) 45%),
+      radial-gradient(circle at 50% 50%, rgba(173,205,250,0.25) 0%, rgba(173,205,250,0) 60%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3{
+    font-family: "Space Grotesk", "Segoe UI", sans-serif;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .mono{
+    font-family: "JetBrains Mono", "Courier New", monospace;
+  }
+
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+
+  /* ---------- Layout shells ---------- */
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section{
+    padding: 64px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(94,234,212,0.15);
+  }
+
+  /* ---------- Top nav ---------- */
+  header.topnav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250,241,241,0.82);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand{
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  .brand span{ color: var(--accent); }
+
+  nav.menu{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .nav-btn{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .nav-btn:hover,
+  .nav-btn.active{
+    color: var(--bg);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero h1{ font-size: 2.6rem; }
+  .status-line{
+    margin-top: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .status-dot{
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #34D399;
+    margin-right: 8px;
+    animation: pulse 1.8s infinite;
+  }
+ @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(52,211,153,0.5); }
+    70%{ box-shadow: 0 0 0 6px rgba(52,211,153,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+  }
+  .hero-photo{
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .hero-lede{
+    margin-top: 18px;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  .cta-row{
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    background: transparent;
+    color: var(--text);
+  }
+  .btn.primary{
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .btn:hover{ border-color: var(--accent); color: var(--accent); }
+  .btn.primary:hover{ color: var(--bg); opacity: 0.9; }
+
+  /* ---------- About ---------- */
+  .about-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 28px;
+    color: #3A4456;
+  }
+
+  /* ---------- Education ---------- */
+  .edu-item{
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+  .edu-item:first-of-type{ border-top: none; }
+  .edu-year{
+    font-family: "JetBrains Mono", monospace;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+  .edu-school{ font-weight: 600; margin-bottom: 4px; }
+  .edu-meta{ color: var(--muted); font-size: 0.92rem; }
+
+  /* ---------- Projects ---------- */
+  .project-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .project-card h3{
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .project-tag{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--accent-2);
+    letter-spacing: 0.05em;
+  }
+  .project-card p{ color: var(--muted); margin: 8px 0 0; }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .skill-block{
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .skill-block h4{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .skill-block p{ margin: 0; color: #3A4456; font-size: 0.92rem; }
+
+  /* ---------- Details (data table) ---------- */
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  thead th{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    background: var(--surface-2);
+    color: var(--accent);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  tbody td{
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    color: #3A4456;
+    font-size: 0.92rem;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .contact-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .contact-card .label{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .contact-card .value{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1rem;
+    color: var(--text);
+    word-break: break-word;
+  }
+  <!--Achivements-->
+  
+    table{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  thead th{
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    background: var(--surface-2);
+    color: var(--accent);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  tbody td{
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    color: #070101;
+    font-size: 1rem;
+  }
+
+  
+  .cert-link{
+    display: inline-block;
+    margin-top: 24px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1rem;
+  }
+
+  footer{
+    text-align: center;
+    padding: 28px 0;
+    color: var(--muted);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 680px){
+    .hero{ grid-template-columns: 1fr; }
+    .hero-photo{ max-width: 220px; margin: 0 auto; }
+    .edu-item{ grid-template-columns: 1fr; }
+    table{ display: block; overflow-x: auto; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .status-dot{ animation: none; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="topnav">
+  <div class="nav-inner">
+    <div class="brand">VINIT<span>.</span>DUBEY</div>
+    <nav class="menu" aria-label="Section navigation">
+      <button class="nav-btn" data-target="home">Home</button>
+      <button class="nav-btn" data-target="about">About</button>
+      <button class="nav-btn" data-target="education">Education</button>
+      <button class="nav-btn" data-target="projects">Projects</button>
+      <button class="nav-btn" data-target="skills">Skills</button>
+      <button class="nav-btn" data-target="details">Details</button>
+      <button class="nav-btn" data-target="contact">Contact</button>
+      <button class="btn" data-target="Achievements">Achievements</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HOME / HERO -->
+  <section id="home">
+    <div class="hero">
+      <div>
+        <span class="eyebrow">Computer Science &middot; SpecSubject->Cyber Security</span>
+        <h1>VINIT DUBEY</h1>
+        <p class="status-line"><span class="status-dot"></span>Open to opportunities (B.tech-CSE-2026) &middot; Noida, Delhi NCR</p>
+        <p class="hero-lede">
+          I was born on 29 October 2003. I'm a detail-oriented Computer Science
+          undergraduate specializing in Cyber Security, with hands-on experience
+          across Python development, data analysis, and threat detection. Scroll
+          down to see my education, projects, skills and contact details. Welcome to my website portfolio scrolle down for more .
+        </p>
+        <div class="cta-row">
+          <button class="btn primary" data-target="projects">View Projects</button>
+          <button class="btn" data-target="about">About Me</button>
+          <button class="btn" data-target="contact">Contact</button>
+          <button class="btn" data-target="Achievements">Achievements</button>
+        </div>
+      </div>
+      <img class="hero-photo" src="VIN.jpg" alt="Photo of Vinit Dubey">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <span class="eyebrow">About</span>
+    <h2 style="margin-bottom:18px;">Hey Know About Me</h2>
+    <div class="about-card">
+      <p>
+        Detail-oriented Computer Science undergraduate specializing in Cyber Security,
+        with a strong foundation in Python programming, Data Structures &amp; Algorithms,
+        web development, and core cybersecurity principles.
+      </p>
+      <p>
+        I build software solutions, analyze data, and develop projects using Python,
+        machine learning, and modern development tools. I'm familiar with security
+        monitoring, threat detection, and network analysis, alongside hands-on experience
+        in problem-solving, debugging, and application development.
+      </p>
+      <p>
+        I'm passionate about coding, learning new technologies, and contributing to
+        innovative software and security solutions in dynamic environments.
+      </p>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <span class="eyebrow">Education</span>
+    <h2 style="margin-bottom:24px;">Academic Background</h2>
+
+    <div class="edu-item">
+      <div class="edu-year mono">2026</div>
+      <div>
+        <div class="edu-school">SRM University &mdash; B.Tech, Computer Science &amp; Engineering (Cyber Security)</div>
+        <div class="edu-meta">Delhi NCR &middot; CGPA 7.7 / 10</div>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-year mono">2021</div>
+      <div>
+        <div class="edu-school">Sant Atulanand Residential Academy &mdash; Class XII, CBSE</div>
+        <div class="edu-meta">Shivpur, Varanasi, Uttar Pradesh</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <span class="eyebrow">Projects</span>
+    <h2 style="margin-bottom:24px;">What I've Built</h2>
+
+    <div class="project-card">
+      <span class="project-tag">01 / COMPUTER VISION</span>
+      <h3>Face Mask Detection</h3>
+      <p>
+        Developed a real-time computer vision model to detect face masks using OpenCV
+        and TensorFlow/Keras. Preprocessed datasets with NumPy and Pandas, and applied
+        data augmentation techniques to improve robustness.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">02 / SECURITY TOOLING</span>
+      <h3>Basic Port Scanner &amp; Phishing URL Checker</h3>
+      <p>
+        Built a Python-based port scanner to identify open ports on a target machine,
+        and a basic phishing URL detector that flags suspicious link patterns.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">03 / FULL-STACK WEB</span>
+      <h3>E-Commerce Web Application</h3>
+      <p>
+        Built a full-stack e-commerce platform with product listings, shopping cart,
+        and secure checkout. Implemented RESTful APIs for product management,
+        authentication, and order tracking, integrated the Razorpay payment gateway,
+        and designed a responsive UI for mobile and desktop.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">04 / IOT &amp; MACHINE LEARNING</span>
+      <h3>Smart Helmet for Accident Detection</h3>
+      <p>
+        Built a predictive safety system using sensors to enhance rider safety through
+        real-time monitoring and accident detection. Applied IoT and machine learning
+        to analyze riding behavior, detect crash events, and monitor rider health,
+        achieving 94.2% accident detection accuracy with rapid alert generation.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <span class="eyebrow">Skills</span>
+    <h2 style="margin-bottom:24px;">Capabilities</h2>
+
+    <div class="skill-grid">
+      <div class="skill-block">
+        <h4>Programming</h4>
+        <p>C++, Python, SQL, HTML, CSS, UI/UX (Figma, Adobe, Canva)</p>
+      </div>
+      <div class="skill-block">
+        <h4>Operating Systems</h4>
+        <p>Windows Server (Event Logs, AD), Linux/Ubuntu (syslog, auditd), Kali Linux</p>
+      </div>
+      <div class="skill-block">
+        <h4>Vulnerability Management</h4>
+        <p>Nessus, OpenVAS, Nmap, Wireshark, patch management, network &amp; threat detection</p>
+      </div>
+      <div class="skill-block">
+        <h4>Developer Tools</h4>
+        <p>Git, VS Code, Linux basics, Termux, Ubuntu, Kali</p>
+      </div>
+      <div class="skill-block">
+        <h4>Areas of Interest</h4>
+        <p>Business analysis, product design, problem-solving, business insights &amp; reporting</p>
+      </div>
+      <div class="skill-block">
+        <h4>Analytics</h4>
+        <p>SQL, Excel, Power BI, data &amp; business visualization</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS (data table) -->
+  <section id="details">
+    <span class="eyebrow">Details</span>
+    <h2 style="margin-bottom:24px;">Collage</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Education</th>
+          <th>Skills</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vinit Dubey</td>
+          <td>B.Tech, Computer Science &amp; Engineering (Cyber Security) &mdash; SRM IST</td>
+          <td>Python Developer, Data Analyst, Cyber Analyst</td>
+          <td>Noida, Delhi NCR</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:none;">
+    <span class="eyebrow">Contact</span>
+    <h2 style="margin-bottom:24px;">Get In Touch</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="label">Phone Number</div>
+        <div class="value">+91 8188999237</div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Email</div>
+        <div class="value">vinitdubey2903@gmail.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="label">Address</div>
+        <div class="value">Noida, Delhi NCR, India</div>
+      </div>
+      <div class="contact-card">
+        <div class="label">LinkedIn</div>
+        <div class="value"><a href="https://www.linkedin.com/in/vinit-dubey29" target="_blank" rel="noopener">linkedin.com/in/vinit-dubey29</a></div>
+      </div>
+    </div>
+  </section>
+  <!--Achivements-->
+   <section id="Achievements" style="border-bottom:none;">
+    <span class="eyebrow">Certificate</span>
+    <h2 style="margin-bottom:24px;">Achievements</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>CERTIFICATES</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr>
+    <td><a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/829SA7VL4NLQ" target="_blank" rel="noopener">
+       Certificate: Data Analysis (Coursera)</a> </td>
+     </tr>
+    </tbody>
+   </table>
+  </a>
+ </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Vinit Dubey &middot; Built with HTML &amp; CSS
+</footer>
+
+
+<script>
+  // Smooth-scroll for every button that carries a data-target
+  document.querySelectorAll('[data-target]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var target = document.getElementById(el.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+ 
+  // Highlight the active nav button based on scroll position
+  var navButtons = document.querySelectorAll('.nav-btn');
+  var sections = Array.from(navButtons).map(function (btn) {
+    return document.getElementById(btn.getAttribute('data-target'));
+  });
+ 
+  function setActiveNav() {
+    var current = sections[0];
+    sections.forEach(function (sec) {
+      if (sec && sec.getBoundingClientRect().top <= 120) current = sec;
+    });
+    navButtons.forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-target') === (current && current.id));
+    });
+  }
+ 
+  window.addEventListener('scroll', setActiveNav);
+  setActiveNav();
+</script>
+
+</body>
+</html>
